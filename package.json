@@ -1,11 +1,27 @@
 {
-  "name": "mentions",
+  "name": "mention-js",
   "version": "0.0.1",
   "scripts": {
     "build": "tsc"
   },
+  "keywords": [
+    "mention-js",
+    "Typescript",
+    "Javascript",
+    "mention"
+  ],
+  "author": "nappa <masa.yanagawa721@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bebeji-nappa/mentions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bebeji-nappa/mentions.git/issues"
+  },
+  "homepage": "https://github.com/bebeji-nappa/mentions.git/",
+  "license": "MIT",
   "packageManager": "yarn@3.2.0",
-  "devDependencies": {
-    "typescript": "^4.6.4"
+  "dependencies": {
+    "http-server": "^14.1.0"
   }
 }
