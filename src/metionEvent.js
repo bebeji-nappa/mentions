@@ -10,14 +10,15 @@ export const mentionUpdate = (
   const trigger_mode = 1;
   const text = element.value
   let mentionText = "";
-
   if (text === "") {
     listElement.style.setProperty("display", "none");
   }
   for (const char of text) {
     if(char.match(trigger)) {
-      mode = trigger_mode;
-      listElement.style.setProperty("display", "block");
+      if (mode === 0) {
+        mode = trigger_mode;
+        listElement.style.setProperty("display", "block");
+      }
     } else if (char.match(/\s[\r\n|\n|\r]/)) {
       mode = 0;
       listElement.style.setProperty("display", "none");
@@ -29,7 +30,11 @@ export const mentionUpdate = (
     if(mode === trigger_mode) {
       const SEARCH_REGEX = new RegExp(`^${mentionText}.*$`)
       const searchRes = Object.values(list).filter(val => val.key.match(SEARCH_REGEX))
-      changeMentionList(element, searchRes ? searchRes : list, listElement, mentionText, trigger);
+      if (searchRes.length) {
+        changeMentionList(element, searchRes ? searchRes : list, listElement, mentionText, trigger);
+      } else {
+        listElement.style.setProperty("display", "none");
+      }
     }
   }
 }
@@ -65,7 +70,11 @@ export const mentionOptionalUpdate = (
     if(mode === trigger_mode) {
       const SEARCH_REGEX = new RegExp(`^(?=.*${mentionText}).*$`)
       const searchRes = Object.values(list).filter(val => val.key.match(SEARCH_REGEX))
-      changeMentionList(element, searchRes ? searchRes : list, listElement, mentionText, trigger);
+      if (searchRes.length) {
+        changeMentionList(element, searchRes ? searchRes : list, listElement, mentionText, trigger);
+      } else {
+        listElement.style.setProperty("display", "none");
+      }
     }
   }
 }

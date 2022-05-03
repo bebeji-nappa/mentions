@@ -1,9 +1,10 @@
-export const createMentionList = (mentionList) => {
+export const createMentionList = (mentionList, element) => {
   const listWrap = document.createElement("div");
   listWrap.setAttribute("id", "mentions-js-list-wrap");
   listWrap.style.setProperty("position", "absolute");
   listWrap.style.setProperty("display", "none");
-  console.log(mentionList)
+  listWrap.style.setProperty("top", `${element.offsetHeight}px`);
+  listWrap.style.setProperty("bottom", "auto");
   mentionList.forEach((listData) => {
     const button = document.createElement("button");
     const li = document.createElement("li");
@@ -19,7 +20,6 @@ export const changeMentionList = (element, mentionList, listWrap, mentionText, t
     listWrap.removeChild(listWrap.firstChild);
   }
   mentionList.forEach((listData) => {
-    const MENTION_REGEX = new RegExp(`^${trigger}${mentionText}.*$/g`)
     const button = document.createElement("button");
     const li = document.createElement("li");
     button.innerHTML = listData.key;

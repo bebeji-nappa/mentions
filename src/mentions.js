@@ -12,8 +12,8 @@ class Mentions {
   }
 
   attach(element) {
-    const listElement = createMentionList(this.list);
-    element.style.setProperty("postion", "relative");
+    const listElement = createMentionList(this.list, element);
+    element.style.setProperty("position", "relative");
     element.parentNode.insertBefore(listElement, element.nextElementSibling);
   }
 

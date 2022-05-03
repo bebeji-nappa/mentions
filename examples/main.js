@@ -13,4 +13,5 @@ mention.attach(textarea);
 
 textarea.addEventListener("input", () => {
   mention.search(textarea);
+  console.log(textarea.selectionStart)
 })
